@@ -1,8 +1,8 @@
-import React, { FC, useState } from 'react'
-import { Layout } from 'antd'
-import menus from 'utils/navigation'
-import Menu from './menu'
-import './style.less'
+import React, { FC, useState } from "react"
+import { Layout } from "antd"
+import menus from "utils/navigation"
+import Menu from "./menu"
+import "./style.less"
 
 const { Sider, Header, Content } = Layout
 

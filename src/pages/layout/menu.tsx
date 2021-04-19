@@ -1,8 +1,7 @@
-import React from 'react'
-import { Menu } from 'antd'
+import React from "react"
+import { Menu } from "antd"
 // import Icon, { IconProps } from 'components/icon'
-import { useHistory } from 'react-router-dom'
-
+import { useHistory } from "react-router-dom"
 
 const { SubMenu } = Menu
 
@@ -21,7 +20,7 @@ function MenuComponent (props: Iprops) {
   const history = useHistory()
 
   const handleMenuClick = (e: any) => {
-    console.log('跳转', e)
+    console.log("跳转", e)
     history.push(e.key)
   }
 
