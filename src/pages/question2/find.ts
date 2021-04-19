@@ -1,7 +1,10 @@
+/* eslint-disable new-cap */
+/* eslint-disable @typescript-eslint/class-name-casing */
 class find {
   private hasInitValue!: boolean
-  private value!: any[] 
-  
+
+  private value!: any[]
+
   constructor(value?: any[]) {
     let hasInitValue = true
     if (value === undefined) {
@@ -9,14 +12,14 @@ class find {
       hasInitValue = false
     }
     Object.defineProperties(this, {
-      value: { //存储每次调用的值
+      value: { // 存储每次调用的值
         enumerable: true,
-        value: value,
+        value,
       },
       hasInitValue: {
         enumerable: false,
-        value: hasInitValue
-      }
+        value: hasInitValue,
+      },
     })
   }
 
@@ -27,11 +30,11 @@ class find {
       // newValue = this.hasInitValue ? this.value : []
       // 这里只考虑正则匹配或者值相等两种情况
       Object.keys(condition).forEach((key) => {
-        if (Object.prototype.toString.call(condition[key]) === '[object String]'
-        || Object.prototype.toString.call(condition[key]) === '[object Number]') {
-          newValue = newValue.filter(p => p[key] === condition[key])
-        } else if (Object.prototype.toString.call(condition[key]) === '[object RegExp]') {
-          newValue = newValue.filter(p => condition[key].test(p[key]))
+        if (Object.prototype.toString.call(condition[key]) === "[object String]"
+        || Object.prototype.toString.call(condition[key]) === "[object Number]") {
+          newValue = newValue.filter((p) => p[key] === condition[key])
+        } else if (Object.prototype.toString.call(condition[key]) === "[object RegExp]") {
+          newValue = newValue.filter((p) => condition[key].test(p[key]))
         }
       })
     }
@@ -39,17 +42,17 @@ class find {
   }
 
   orderBy(...args: any[]) {
-    let [key, mode] = args
+    const [key, mode] = args
     let newValue: any[] = this.hasInitValue ? this.value : []
 
     // 降序
-    if (mode === 'asc') {
+    if (mode === "asc") {
       newValue = newValue.sort((a, b) => {
         if (a[key] < b[key]) return -1
         if (a[key] > b[key]) return 1
         return 0
       })
-    } else if (mode === 'desc') {
+    } else if (mode === "desc") {
       newValue = newValue.sort((a, b) => {
         if (a[key] < b[key]) return 1
         if (a[key] > b[key]) return -1
@@ -73,16 +76,12 @@ class find {
   }
 
   [Symbol.toPrimitive](hint?: string) {
-    const value = this.value
-    if (hint === 'string') {
+    const { value } = this
+    if (hint === "string") {
       return String(value)
-    } else {
-      return value
     }
+    return value
   }
-
 }
 
-export default (data: any[]) => {
-  return new find(data)
-};
+export default (data: any[]) => new find(data)

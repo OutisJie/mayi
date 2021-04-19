@@ -98,7 +98,7 @@ module.exports = {
   devServer: {
     contentBase: '../dist/',
     host: '127.0.0.1',
-    port: '3000',
+    port: '3005',
     headers: { // 在所有响应中添加首部内容
       'Access-Control-Allow-Origin': '*',
     },
